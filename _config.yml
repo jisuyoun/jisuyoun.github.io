@@ -20,7 +20,7 @@ title                    : "기록용 블로그"
 title_separator          : "YoonJS 블로그"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "윤지수"
-description              : "공부한 걸 기록하고 있습니다."
+description              : "공부 기록중"
 url                      : "https://jisuyoun.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -107,7 +107,7 @@ author:
   name             : "YoonJiSu"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "공부한 걸 기록하고 있습니다."
-  location         : "Incheon, South Korea"
+  location         : "South Korea"
   email            :
   links:
     - label: "Email"
