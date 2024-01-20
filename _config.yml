@@ -21,7 +21,7 @@ title_separator          : "YoonJS 블로그"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "윤지수"
 description              : "공부 기록중"
-url                      : "https://jisuyoun.github.io"
+url                      : "https://jisuyountest.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
