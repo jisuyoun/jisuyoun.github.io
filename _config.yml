@@ -14,6 +14,9 @@
 # remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
+# my add
+futrue: true
+
 # Site Settings
 locale                   : "ko-KR"
 title                    : "기록용 블로그"
@@ -21,6 +24,7 @@ title_separator          : "YoonJS 블로그"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "윤지수"
 description              : "공부 기록중"
+published                : true
 url                      : "https://jisuyountest.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -106,16 +110,16 @@ analytics:
 author:
   name             : "YoonJiSu"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "공부한 걸 기록하고 있습니다."
+  bio              : "공부 기록"
   location         : "South Korea"
   email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:jisuyoun319@gmail.com"
-    - label: "jisuyoun319@gmail.com"
+    - #label: "jisuyoun319@gmail.com"
       #icon: "fas fa-fw fa-link"
-      url: "mailto:jisuyoun319@gmail.com"
+      #url: "mailto:jisuyoun319@gmail.com"
     - #label: "Twitter"
       #icon: "fab fa-fw fa-twitter-square"
       # url: "https://twitter.com/"
