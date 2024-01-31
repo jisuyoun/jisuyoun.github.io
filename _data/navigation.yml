@@ -18,5 +18,5 @@ sidebar-category:
         url: "/react"
       - title: "자격증"
         url:  "/CSStudy"
-      - title: "카테고리C"
-        url:  "/CategoryC"
+      #- title: "카테고리C"
+      #  url:  "/CategoryC"
