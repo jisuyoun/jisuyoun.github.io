@@ -1,12 +1,22 @@
 # main links
 main:
-  - title: "React"
-    url: "/React"
-  - title: "자격증"
-    url: "/CSStudy"
+  - title: "Home"
+    url: "/"
+  # - title: "About"
+  #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+  
+sidebar-category:
+  - title: "카테고리"
+    children:
+      - title: "React"
+        url: "/react"
+      - title: "자격증"
+        url:  "/CSStudy"
+      - title: "카테고리C"
+        url:  "/CategoryC"
