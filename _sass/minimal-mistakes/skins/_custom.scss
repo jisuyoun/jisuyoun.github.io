@@ -6,7 +6,7 @@
 $text-color: #000 !default;
 $muted-text-color: $text-color !default;
 $primary-color: #ffc2b3 !default;
-$border-color: mix(#fff, $text-color, 75%) !default;
+$border-color: mix(#default, $text-color, 75%) !default;
 $footer-background-color: #ffc2b3 !default;
 $link-color: #ffc2b3 !default;
 $masthead-link-color: $text-color !default;
@@ -43,7 +43,7 @@ $base0f: #b18a3d !default;
 }
 
 .page__footer {
-  color: #ffc2b3 !important; // override
+  color: #fff !important; // override
 }
 
 .page__footer-follow .social-icons i,
