@@ -9,7 +9,7 @@
       <li style="font-size:0.75em; font-weight:bold;">
             <span>전체 글 수</span> <span style="color:#ff471a;">{{sum}}</span> <span>개</style> 
       </li>
-      <li>
+      <li> 
         <!--span 태그로 카테고리들을 크게 분류 -->
         <span class="nav__sub-title" style="font-size:0.75em;">📂 공부</span>
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
