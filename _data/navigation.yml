@@ -15,7 +15,7 @@ sidebar-category:
   - title: "카테고리"
     children:
       - title: "React"
-        url: "/react"
+        url: "/categories/react"
       - title: "자격증"
         url:  "/CSStudy"
       #- title: "카테고리C"
