@@ -24,7 +24,7 @@
         <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     </h2>
-    🗓️ {{ post.date | date: " %Y.%m.%d" }}
+    <div style="font-size:0.75em">🗓️ {{ post.date | date: " %Y.%m.%d" }}</div>
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.summary | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
   </article>
 </div>
