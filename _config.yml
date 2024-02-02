@@ -299,3 +299,4 @@ defaults:
       sidebar_main: true
       toc: true
       read_time: true
+      date: true
