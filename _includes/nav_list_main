@@ -11,20 +11,20 @@
       </li>
       <li> 
         <!--span 태그로 카테고리들을 크게 분류 -->
-        <span class="nav__sub-title" style="font-size:0.75em;">📂 공부</span>
+        <span class="nav__sub-title" style="font-size:1em;">📂 공부</span>
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
                     {% if category[0] == "React" %}
-                        <li><a href="/categories/react" style="font-size:0.75em;">📄 React ({{category[1].size}})</a></li>
+                        <li><a href="/categories/react" style="font-size:1em;">📄 React ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "CS" %}
-                        <li><a href="/categories/cs" style="font-size:0.75em;">📄 자격증 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/cs" style="font-size:1em;">📄 자격증 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
