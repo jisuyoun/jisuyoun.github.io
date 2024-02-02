@@ -6,8 +6,8 @@
   <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label }}</label>
   <ul class="nav__items" id="category_tag_menu">
       <!--전체 글 수-->
-      <li>
-            <span>전체 글 수</style> <span>{{sum}}</style> <span>개</style> 
+      <li style="font-size:0.75em; font-weight:bold;">
+            <span>전체 글 수</span> <span style="color=#ff471a">{{sum}}</span> <span>개</style> 
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 -->
@@ -18,14 +18,14 @@
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
                     {% if category[0] == "React" %}
-                        <li><a href="/categories/react" class="">react ({{category[1].size}})</a></li>
+                        <li><a href="/categories/react" class="custom_li">react ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "CS" %}
-                        <li><a href="/categories/cs" class="">자격증 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/cs" class="custom_li">자격증 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
