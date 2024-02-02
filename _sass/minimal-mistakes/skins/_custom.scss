@@ -5,10 +5,10 @@
 /* Colors */
 $text-color: #000 !default;
 $muted-text-color: $text-color !default;
-$primary-color: #3d719b !default;
+$primary-color: #f3f6f6 !default;
 $border-color: mix(#fff, $text-color, 75%) !default;
-$footer-background-color: #3d719b !default;
-$link-color: #3d719b !default;
+$footer-background-color: #f3f6f6 !default;
+$link-color: #f3f6f6 !default;
 $masthead-link-color: $text-color !default;
 $masthead-link-color-hover: $text-color !default;
 $navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
@@ -43,7 +43,7 @@ $base0f: #b18a3d !default;
 }
 
 .page__footer {
-  color: #3d719b !important; // override
+  color: #f3f6f6 !important; // override
 }
 
 .page__footer-follow .social-icons i,
