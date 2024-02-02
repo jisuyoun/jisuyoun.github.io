@@ -3,8 +3,9 @@
    ========================================================================== */
 
 .masthead {
+  background-color: #ffc2b3;
   position: relative;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid #ffc2b3;
   -webkit-animation: $intro-transition;
   animation: $intro-transition;
   -webkit-animation-delay: 0.15s;
@@ -65,6 +66,10 @@
   width: 100%;
   clear: both;
 
+  #site-nav {
+    background-color: #ffc2b3;
+  }
+  
   .site-nav {
     margin-left: 0;
 
