@@ -21,10 +21,19 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+        <span class="nav__sub-title" style="font-size:1em;">📂 기타</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "CS" %}
-                        <li><a href="/categories/cs" style="font-size:1em;">📄 자격증 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/cs" style="font-size:1em;">📄 CS ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Etc" %}
+                        <li><a href="/categories/etc" style="font-size:1em;">📄 기타 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

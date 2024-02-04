@@ -17,14 +17,17 @@
         <img src="{{ teaser | relative_url }}" alt="">
       </div>
     {% endif %}
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+    <div style="font-size:0.75em; margin-top:2em;">등록일: {{ post.date | date: " %Y.%m.%d" }}</div>
+    {% if post.last_modified_at %}
+    <div style="font-size:0.75em;">수정일: {{ post.last_modified_at | date: " %Y.%m.%d" }}</div>
+    {% endif %}
+    <h2 class="archive__item-title no_toc" itemprop="headline" style="margin-top:0;">
       {% if post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
       {% else %}
         <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     </h2>
-    <div style="font-size:0.75em">🗓️ {{ post.date | date: " %Y.%m.%d" }}</div>
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.summary | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
   </article>
 </div>
