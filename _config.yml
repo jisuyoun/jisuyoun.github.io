@@ -323,4 +323,5 @@ defaults:
       read_time: true
       comments: # true
       share: true
+      future: true
       related: true
