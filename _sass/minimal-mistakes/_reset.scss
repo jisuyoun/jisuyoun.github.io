@@ -10,16 +10,22 @@ html {
   background-color: $background-color;
   font-size: $doc-font-size;
 
+  /* 본문 사이즈 */
   @include breakpoint($medium) {
-    font-size: $doc-font-size-medium;
+    //font-size: $doc-font-size-medium;
+    font-size: 15px;
   }
 
+  /* 헤더 사이즈 */
   @include breakpoint($large) {
-    font-size: $doc-font-size-large;
+    //font-size: $doc-font-size-large;
+    font-size: 25px;
   }
 
+  /* 제목 사이즈 */
   @include breakpoint($x-large) {
-    font-size: $doc-font-size-x-large;
+    //font-size: $doc-font-size-x-large;
+    font-size: 17.5px;
   }
 
   -webkit-text-size-adjust: 100%;

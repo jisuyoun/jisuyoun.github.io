@@ -115,8 +115,8 @@ analytics:
 author:
   name             : "jisuyoun"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
+  bio              : "공부한 걸 기록중"
+  location         : "Incheon"
   email            :
   links:
     - label: "Email"
@@ -321,7 +321,10 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
+      comments: true
       share: true
-      future: true
       related: true
+      sidebar_main: true  # 사이드바에 카테고리 추가
+      toc: true   # 콜아웃 추가
+      toc_icon: "bars" # 콜아웃 추가
+      toc_sticky: true # 콜아웃 추가
