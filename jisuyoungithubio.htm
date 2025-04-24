@@ -1,0 +1,968 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="ko-KR" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Kafka 로컬테스트 기록중 기록용 블로그</title>
+<meta name="description" content="💡 Zookeeper는 설정을 건드리지 않으면 기본 포트번호가 2181이고, Kafka는 기본 포트번호가 9092다.">
+
+
+  <meta name="author" content="jisuyoun">
+  
+  <meta property="article:author" content="jisuyoun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="기록용 블로그">
+<meta property="og:title" content="Kafka 로컬테스트">
+<meta property="og:url" content="https://jisuyoun.github.io/data/Kafka%EB%A1%9C%EC%BB%AC%ED%85%8C%EC%8A%A4%ED%8A%B8/">
+
+
+  <meta property="og:description" content="💡 Zookeeper는 설정을 건드리지 않으면 기본 포트번호가 2181이고, Kafka는 기본 포트번호가 9092다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-04-24T00:00:00+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://jisuyoun.github.io/data/Kafka%EB%A1%9C%EC%BB%AC%ED%85%8C%EC%8A%A4%ED%8A%B8/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="기록용 블로그 Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          기록용 블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://jisuyoun.github.io/"
+                
+                
+              >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories/"
+                
+                
+              >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/tags/"
+                
+                
+              >Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://jisuyoun.github.io/" itemprop="url">jisuyoun</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>공부한 걸 기록중</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Incheon</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:jisuyoun319@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/jisuyoun" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+
+  <nav class="nav__list">
+    <input id="ac-toc" name="accordion-toc" type="checkbox" />
+    <label for="ac-toc">토글 메뉴</label>
+    <ul class="nav__items" id="category_tag_menu">
+        <!--전체 글 수-->
+        <li style="margin-top:10%; border-bottom: 1px solid grey;">
+              <span style="font-size:18px; font-style:bold;">전체 글 수</style> <span>5</style> <span>개</style> 
+        </li>
+        <li>
+          <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+          <span class="nav__sub-title">Data</span>
+              <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+              <ul>
+                  <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                  <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                  
+                      
+                  
+                      
+                          <li><a href="/categories/data" class="">Data (2)</a></li>
+                      
+                  
+                      
+                  
+                      
+                  
+              </ul>
+              <ul>
+                  
+                      
+                  
+                      
+                  
+                      
+                  
+                      
+                  
+              </ul>
+          <span class="nav__sub-title">Java</span>
+              <ul>
+                  
+                      
+                  
+                      
+                  
+                      
+                  
+                      
+                          <li><a href="/categories/java" class="">Java (1)</a></li>
+                      
+                  
+              </ul>
+            <span class="nav__sub-title">Git</span>
+              <ul>
+                  
+                      
+                  
+                      
+                  
+                      
+                          <li><a href="/categories/git" class="">Git (1)</a></li>
+                      
+                  
+                      
+                  
+              </ul>
+        </li>
+    </ul>
+  </nav>
+
+
+
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Kafka 로컬테스트">
+    <meta itemprop="description" content="💡 Zookeeper는 설정을 건드리지 않으면 기본 포트번호가 2181이고, Kafka는 기본 포트번호가 9092다.">
+    <meta itemprop="datePublished" content="2025-04-24T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://jisuyoun.github.io/data/Kafka%EB%A1%9C%EC%BB%AC%ED%85%8C%EC%8A%A4%ED%8A%B8/" itemprop="url">Kafka 로컬테스트
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bars"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#1-kafka-로컬-테스트">1. Kafka 로컬 테스트</a><ul><li><a href="#11-zookeeper-설치-및-실행">1.1. Zookeeper 설치 및 실행</a><ul><li><a href="#kafka-280-버전-이상-사용시">Kafka 2.8.0 버전 이상 사용시</a></li></ul></li><li><a href="#12-kafka-다운-및-실행">1.2. Kafka 다운 및 실행</a><ul><li><a href="#121-발견한-오류">1.2.1. 발견한 오류</a></li></ul></li><li><a href="#13-topic-생성하기">1.3. Topic 생성하기</a></li><li><a href="#14-topic-조회하기">1.4. Topic 조회하기</a></li><li><a href="#15-producer-consumer-시작">1.5. Producer, Consumer 시작</a><ul><li><a href="#151-발견한-오류들">1.5.1. 발견한 오류들</a></li></ul></li><li><a href="#16-topic-삭제">1.6. Topic 삭제</a><ul><li><a href="#151-발견한-오류">1.5.1. 발견한 오류</a></li></ul></li></ul></li><li><a href="#2-자바-카프카-테스트-소스">2. 자바 카프카 테스트 소스</a><ul><li><a href="#21-applicationyml">2.1. application.yml</a><ul><li><a href="#211-발견한-오류들">2.1.1. 발견한 오류들</a></li><li><a href="#212-생성된-group-조회">2.1.2. 생성된 group 조회</a></li><li><a href="#213-offset-조회-및-초기화">2.1.3. offset 조회 및 초기화</a></li></ul></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p class="notice--primary">💡 Zookeeper는 설정을 건드리지 않으면 기본 포트번호가 2181이고, Kafka는 기본 포트번호가 9092다.</p>
+
+<p class="notice--info"><a href="https://jisuyoun.github.io/data/Kafka%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">Kafka</a> ⇒ 카프카 개념 정리 페이지</p>
+
+<h1 id="1-kafka-로컬-테스트">1. Kafka 로컬 테스트</h1>
+
+<p><a href="https://kafka.apache.org/10/documentation.html#quickstart">Kafka 공식문서</a></p>
+
+<h2 id="11-zookeeper-설치-및-실행">1.1. Zookeeper 설치 및 실행</h2>
+
+<p class="notice--danger">✋ Zookeeper 설치 및 실행은 Kafka 2.8.0 미만 버전을 사용할 시에만 해당된다</p>
+
+<p><a href="https://zookeeper.apache.org/">Apache ZooKeeper</a></p>
+
+<ol>
+  <li>
+    <p>위 주소로 들어가 Zookeeper 중에서 <strong><code class="language-plaintext highlighter-rouge">-bin</code></strong> 으로 끝나는 <strong><code class="language-plaintext highlighter-rouge">tar.gz</code></strong> 파일을 받아준다.</p>
+
+    <p class="notice--primary">Apache-zookeeper-3.8.3.gz.tar와 같은 파일을 받으면, data 폴더가 없으니, -bin 으로 끝나는 파일 받기</p>
+  </li>
+  <li>conf 폴더 내 <strong><code class="language-plaintext highlighter-rouge">zoo-sample</code></strong>을 복사한 후 같은 경로(conf 폴더 내) 붙여넣기 한 후 <strong><code class="language-plaintext highlighter-rouge">zoo.cfg</code></strong>로 이름을 변경해준다.</li>
+  <li>zoo.cfg를 열어 <strong><code class="language-plaintext highlighter-rouge">dataDir={zookeeper경로}/data</code></strong>로 변경해준다.</li>
+  <li>cmd 창을 열어서 {zookeeper경로}/bin 으로 이동 한 후 <strong><code class="language-plaintext highlighter-rouge">zkServer.cmd</code></strong> 를 입력하면 zookeeper가 실행이 완료된다.</li>
+</ol>
+
+<p class="notice--primary">💡 여기서 Zookeeper가 실행된 cmd 창을 끄면 kafka와 연결되지 않는다.</p>
+
+<h3 id="kafka-280-버전-이상-사용시">Kafka 2.8.0 버전 이상 사용시</h3>
+
+<p><a href="https://kafka.apache.org/downloads">Apache Kafka</a></p>
+
+<p>위 주소로 들어가서 Kafka 다운로드한다.</p>
+
+<p>터미널에서 다운 받은 Kafka 폴더로 이동 후 아래 명령어 입력</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">bin\windows\zookeeper-server-start.bat config\zookeeper.properties</code></strong></p>
+
+<p><img src="https://github.com/user-attachments/assets/81954113-1f49-48a0-b78b-e5b3ea1f84c0" alt="Image" /></p>
+
+<h2 id="12-kafka-다운-및-실행">1.2. Kafka 다운 및 실행</h2>
+
+<p><a href="https://kafka.apache.org/downloads">Apache Kafka</a></p>
+
+<ol>
+  <li>위 주소에서 Kafka 다운
+    <ul>
+      <li>Source download: Kafka를 커스텀하여 사용할 경우 다운
+        <ul>
+          <li>참고) Source를 다운 받아 사용할 경우 Gradle이 필요하다.</li>
+        </ul>
+      </li>
+      <li>Binary download: 커스텀 없이 단순 Kafka 사용할 경우 다운</li>
+    </ul>
+  </li>
+  <li>다운 받은 Kafka 폴더에서 <strong><code class="language-plaintext highlighter-rouge">config → server.properties</code></strong> 열기</li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">log.dirs={Kafka 경로}/logs</code></strong> 로 변경
+<img src="https://github.com/user-attachments/assets/2b995c54-00f9-48c2-976d-c8ca6cec26a5" alt="Image" /></p>
+  </li>
+  <li>
+    <p>터미널을 열어 Kafka가 설치된 경로로 이동 후 아래 명령어 입력하여 Kafka 실행</p>
+
+    <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-server-start.bat config\server.properties</code></strong></p>
+
+    <p class="notice--primary">💡 Kafka 버전과 상관없이 Zookeeper가 실행되어 있는 상태에서 명령어를 입력해야 Kafka가 실행된다 ‼️</p>
+  </li>
+</ol>
+
+<h3 id="121-발견한-오류">1.2.1. 발견한 오류</h3>
+<p><span style="color:red"><code class="language-plaintext highlighter-rouge">입력 줄이 너무 깁니다. 명령 구문이 올바르지 않습니다.</code></span></p>
+
+<p>해당 오류는 경로가 너무 길어서 나타나는 오류로, C드라이브 밑으로 옮겨 Kafka 폴더 경로를 짧게 만들어 해결하였다.</p>
+
+<h2 id="13-topic-생성하기">1.3. Topic 생성하기</h2>
+
+<ul>
+  <li>
+    <p>Kafka 2.8.0 이상 사용시</p>
+
+    <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-topics.bat --create --bootstrap-server localhost:{포트번호} --replication-factor 1 --partitions 1 --topic {토픽명}</code></strong></p>
+  </li>
+  <li>
+    <p>Kafka 2.8.0 미만 사용시</p>
+
+    <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-topics.bat --create --zookeeper localhost:{포트번호} --replication-factor 1 --partitions 1 --topic {토픽명}</code></strong></p>
+  </li>
+</ul>
+
+<h2 id="14-topic-조회하기">1.4. Topic 조회하기</h2>
+
+<ul>
+  <li>
+    <p>Kafka 2.8.0 이상 사용시</p>
+
+    <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-topics.bat --list --bootstrap-server localhost:{포트번호}</code></strong></p>
+  </li>
+  <li>
+    <p>Kafka 2.8.0 미만 사용시</p>
+
+    <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-topics.bat --list --zookeeper localhost:{포트번호}</code></strong></p>
+  </li>
+</ul>
+
+<h2 id="15-producer-consumer-시작">1.5. Producer, Consumer 시작</h2>
+
+<ul>
+  <li>consumer 실행시
+    <ul>
+      <li>
+        <p>Kafka 2.8.0 이상 사용시</p>
+
+        <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:{포트번호} --topic {토픽명}</code></strong></p>
+      </li>
+      <li>
+        <p>Kafka 2.8.0 미만 사용시</p>
+
+        <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-console-consumer.bat --zookeeper localhost:{포트번호} --topic {토픽명}</code></strong></p>
+
+        <p class="notice--primary">💡consumer를 실행시키면 topic을 발생할 producer를 실행시키지 않았으므로, 아무 것도 뜨지 않는 것이 정상이다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>producer 실행시</p>
+
+    <p><code class="language-plaintext highlighter-rouge">bin\windows\kafka-console-producer.bat –-broker-list localhost:{포트번호} --topic {토픽명}</code></p>
+  </li>
+  <li>consumer - producer 테스트시
+    <ol>
+      <li>consumer를 실행시킨 터미널 창을 끄지 않고, 새로운 터미널 창을 열어 producer 실행</li>
+      <li>producer에 consumer에 보낼 메시지를 입력하였을 때 consumer를 실행시킨 터미널에 해당 메시지가 뜰 경우 Kafka consumer - producer 테스트 완료</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="151-발견한-오류들">1.5.1. 발견한 오류들</h3>
+<p><span style="color:red;"><code class="language-plaintext highlighter-rouge">Exception in thread "main" joptsimple.UnrecognizedOptionException: zookeeper is not a recognized option</code></span></p>
+
+<p>해당 오류가 발생하는 원인은 아래와 같다.</p>
+<ul>
+  <li>명령어가 잘 못 되었을 경우</li>
+  <li>localhost:{포트번호}에서 포트번호가 잘못되었을 경우
+포트번호의 경우 Kakfa를 설치한 후 변경하지 않았다면 대부분 <strong>9092</strong>가 포트번호다.</li>
+</ul>
+
+<p class="notice--primary">💡포트번호는 Kafka 서버 실행시 나타나는 로그들 중 맨 밑 적혀있다. 포트번호가 잘 못 된 경우일 경우 Kafka의 server.properties에서 listener=PLAINTEST:\localhost:{정상적인 포트번호}로 변경 후 Kafka 서버를 껐다켜서 다시 실행을 해본다. 만약, 포트 번호를 변경하지 않았음에도 실행되지 않을 경우 server.properties에서 <code class="language-plaintext highlighter-rouge">istener=PLAINTEST:\localhost:{정상적인 포트번호}</code>로 변경 후 Kafka 서버를 재부팅 해본다.</p>
+
+<h2 id="16-topic-삭제">1.6. Topic 삭제</h2>
+
+<ul>
+  <li>
+    <p>Kafka 2.8.0 이상 사용시</p>
+
+    <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-topics.bat --delete --bootstrap-server localhost:{port번호} --topic {삭제할토픽명}</code></strong></p>
+  </li>
+  <li>
+    <p>Kafka 2.8.0 미만 사용시</p>
+
+    <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-topics.bat --delete --zookeeper localhost:{port번호} --topic {삭제할토픽명}</code></strong></p>
+  </li>
+</ul>
+
+<p class="notice--danger">💡 삭제할 때 zookeeper 서버와 연결된 상태여야 삭제가 된다! 삭제가 안 된다면 zookeeper 서버와 연결한 터미널이 꺼진 것은 아닌지 확인하기</p>
+
+<h3 id="151-발견한-오류">1.5.1. 발견한 오류</h3>
+<p><span style="color:red"><code class="language-plaintext highlighter-rouge">removed fetcher for partitions</code></span></p>
+
+<p>윈도우에서 Topic 삭제시 해당 오류가 뜨면서 kafka가 연결되지 않는 오류가 있는데, 해당 오류 발생 시 kafka 로그(./tmp) 폴더에서 kafka 관련 폴더를 삭제해야 한다. <span style="color:red">다만, 삭제할 경우 지금까지 만든 토픽들이 삭제되니 주의의</span></p>
+
+<p><span style="color:red"><code class="language-plaintext highlighter-rouge">already marked for deletion</code></span></p>
+
+<p>토픽 삭제 설정을 하지 않아 생긴 문제로, config 폴더 내 server.properties 파일에 <strong><code class="language-plaintext highlighter-rouge">delete.topic.enable=true</code></strong>를 추가해준 후 zookeeper와 kafka 서버를 다시 연결한다.
+또는, zookeeper shell에서 rmr 명령어를 통해 완전히 삭제하는 방법도 있다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin\windows\zookeeper-shell.bat localhost:2181
+ls /broker/topics
+
+rmr /brokers/topics/morpheme.t
+</code></pre></div></div>
+
+<h1 id="2-자바-카프카-테스트-소스">2. 자바 카프카 테스트 소스</h1>
+
+<p><a href="https://www.notion.so/Java-Kafka-dce7c49da4c24443889ef1897ff85209?pvs=21">Java - Kafka 연결</a></p>
+
+<p><a href="https://github.com/apache/kafka/tree/1.0/streams/examples/src/main/java/org/apache/kafka/streams/examples">kafka/streams/examples/src/main/java/org/apache/kafka/streams/examples at 1.0 · apache/kafka</a></p>
+
+<p>위 주소는 깃허브 주소로, 1.0 버전이므로, 다른 버전 사용시 해당 깃허브에서 branch를 알맞은 버전으로 변경해서 소스를 참고하면 된다.</p>
+
+<h2 id="21-applicationyml">2.1. application.yml</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spark:
+  streaming-context:
+    duration:
+      unit: seconds
+      value: 1
+spring:
+    kafka:
+        consumer:
+            bootstrap-servers: localhost:9092
+            group-id: myGroup
+            auto-offset-reset: earliest
+            key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        producer:
+            bootstrap-servers: localhost:9092
+            key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.apache.kafka.common.serialization.StringSerializer
+</code></pre></div></div>
+
+<h3 id="211-발견한-오류들">2.1.1. 발견한 오류들</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Consumer clientId=consumer-1, groupId=event1] Fetch READ_UNCOMMITTED at offset 0 for partition test_real-0 returned fetch data (error=NONE, highWaterMark=0, lastStableOffset = -1, logStartOffset = 0, abortedTransactions = null, recordsSizeInBytes = 0)
+[Consumer clientId=consumer-1, groupId=event1] Added READ_UNCOMMITTED fetch request for partition test_real-0 at offset 0 to node DESKTOP-R87846Q:9092 (id: 0 rack: null)
+[Consumer clientId=consumer-1, groupId=event1] Sending READ_UNCOMMITTED fetch for partitions [test_real-0] to broker DESKTOP-R87846Q:9092 (id: 0 rack: null)
+</code></pre></div></div>
+
+<p>자바에서 kafka를 실행 시 위와 같은 오류가 반복적으로 뜨고, 데이터가 producer로 이동되지 않는 문제가 발생했다.
+해당 문제의 원인은 consumer에 데이터가 없는데 읽어올 때 생기는 오류다.</p>
+
+<p>해결 방법은</p>
+<ol>
+  <li>kafka 설정에서 auto-offset-reset이 latest로 되어있는지 확인한 후 되어있다면 earliest으로 변경하여 가장 처음 오프셋부터 읽는 것으로 변경해준다.</li>
+  <li>producer에 데이터가 잘 들어갔는지 kafka-console-producer.bat을 사용하여 데이터가 들어간 것이 맞는지 확인한다.</li>
+</ol>
+
+<h3 id="212-생성된-group-조회">2.1.2. 생성된 group 조회</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-consumer-group.bat --bootstrap-server localhost:{port번호} --list</code></strong></p>
+
+<h3 id="213-offset-조회-및-초기화">2.1.3. offset 조회 및 초기화</h3>
+
+<p>Producer로 데이터가 잘 들어가 있음에도 consumer에서 출력하지 못할 경우
+모든 offset을 읽어 더이상 읽을 데이터(offset)이 없어 읽어오지 못하는 것 일 수도 있다.</p>
+
+<ol>
+  <li>offset 조회
+    <ul>
+      <li>
+        <p>Kafka 2.8.0 이상 사용시</p>
+
+        <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:{port번호} —-describe -—group {groupId}</code></strong></p>
+      </li>
+      <li>
+        <p>Kafka 2.8.0 미만 사용시</p>
+
+        <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-consumer-groups.bat --zookeeper localhost:{port번호} —-describe -—group {groupId}</code></strong></p>
+
+        <p class="notice--primary">💡 CURRENT-OFFSET: 조회된 데이터의 개수
+  LOG-END-OFFSET: 마지막으로 조회된 데이터의 번호</p>
+      </li>
+    </ul>
+  </li>
+  <li>offset 초기화
+    <ul>
+      <li>
+        <p>Kafka 2.8.0 이상 사용시</p>
+
+        <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:{port번호} --group {groupId} --reset-offsets --to-earliest --topic {토픽명} --execute</code></strong></p>
+      </li>
+      <li>
+        <p>Kafka 2.8.0 미만 사용시</p>
+
+        <p><strong><code class="language-plaintext highlighter-rouge">bin\windows\kafka-consumer-groups.bat --zookeeper localhost:{port번호} --group {groupId} --reset-offsets --to-earliest --topic {토픽명} --execute</code></strong></p>
+      </li>
+    </ul>
+  </li>
+  <li>발견한 오류
+<span style="color:red;"><code class="language-plaintext highlighter-rouge">Assignments can only be reset if the group 'myGroup' is inactive, but the current state is Stable.</code></span></li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\kafka&gt; .\bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:9092 --describe --group myGroup
+
+GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                             HOST            CLIENT-ID
+myGroup         myTopic         0          14              14              0               consumer-myGroup-1-365e21b7-70f4-42f4-82d7-f307644efbc0 /192.168.56.1   consumer-myGroup-1
+PS C:\kafka&gt; .\bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:9092 --group myGroup --reset-offsets --to-earliest --topic myTopic --execute
+
+Error: Assignments can only be reset if the group 'myGroup' is inactive, but the current state is Stable.
+
+GROUP                          TOPIC                          PARTITION  NEW-OFFSET
+</code></pre></div></div>
+
+<ol>
+  <li>Consumer 그룹 상태 확인: <strong><code class="language-plaintext highlighter-rouge">.\bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:9092 --describe --group myGroup</code></strong></li>
+  <li>Consumer 그룹 삭제:  <strong><code class="language-plaintext highlighter-rouge">.\bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:9092 --group myGroup --delete</code></strong></li>
+  <li>offset 재설정: <strong><code class="language-plaintext highlighter-rouge">.\bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:9092 --group myGroup --reset-offsets --to-earliest --topic myTopic --execute</code></strong></li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#kafka" class="page__taxonomy-item p-category" rel="tag">Kafka</a><span class="sep">, </span>
+    
+      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">Study</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#data" class="page__taxonomy-item p-category" rel="tag">Data</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2025-04-24T00:00:00+00:00">April 24, 2025</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  <h4 class="page__share-title">공유하기</h4>
+
+  <a href="https://x.com/intent/tweet?text=Kafka+%EB%A1%9C%EC%BB%AC%ED%85%8C%EC%8A%A4%ED%8A%B8%20https%3A%2F%2Fjisuyoun.github.io%2Fdata%2FKafka%25EB%25A1%259C%25EC%25BB%25AC%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8%2F" class="btn btn--x" aria-label="Share on X" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 X">
+    <i class="fas fa-fw fa-share-alt" aria-hidden="true"></i><span> X</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjisuyoun.github.io%2Fdata%2FKafka%25EB%25A1%259C%25EC%25BB%25AC%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8%2F" class="btn btn--facebook" aria-label="Share on Facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook">
+    <i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span>
+  </a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://jisuyoun.github.io/data/Kafka%EB%A1%9C%EC%BB%AC%ED%85%8C%EC%8A%A4%ED%8A%B8/" class="btn btn--linkedin" aria-label="Share on LinkedIn" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/java/JavaScheduler/" class="pagination--pager" title="Java Scheduler">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">참고</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/java/JavaScheduler/" rel="permalink">Java Scheduler
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Java Scheduler란, 스프링에서 일정 주기마다 메소드를 실행시켜야 할 경우 사용하는 방법이다.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/git/Git%EB%AA%85%EB%A0%B9%EC%96%B4/" rel="permalink">Git 명령어
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">처음 Git을 로컬에 받기
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/data/Kafka%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/" rel="permalink">Kafka 개념 정리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">1. Kafka란?
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cpp/first/" rel="permalink">포스팅 테스트
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">포스팅 테스트
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/jisuyoun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://jisuyoun.github.io">기록용 블로그</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
