@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Java Scheduler"
+title: "[Java] Java Scheduler"
 published: true
 categories:
   - Java
