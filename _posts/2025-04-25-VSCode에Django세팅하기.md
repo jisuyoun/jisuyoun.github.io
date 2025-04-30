@@ -16,11 +16,11 @@ tag:
 3. `Ctrl + Shift + X`를 눌러 확장으로 들어간다.
 4. Django를 검색해서 설치
     
-    ![django.png](django.png)
+    ![Image](https://github.com/user-attachments/assets/1dee5ac8-df10-4b6c-bbca-86428b21bc58)
     
 5. python을 검색해서 설치
     
-    ![python.png](python.png)
+    ![Image](https://github.com/user-attachments/assets/2e6ac324-a2cf-464c-bec9-65981aa305b0)
     
 
 ## 가상환경 설치
@@ -30,7 +30,7 @@ tag:
     1. 2번째 venv 부분은 가상환경의 이름을 지어주는 곳이다.
 3. 명령어를 입력하여 가상환경이 제대로 설치되었다면 아래와 같이 나온다.
     
-    ![venv.png](venv.png)
+    ![Image](https://github.com/user-attachments/assets/58ff0857-04ad-41ba-a521-61f0be57805a)
     
 
 ## 가상환경 실행
@@ -46,12 +46,12 @@ tag:
 
 1. 가상환경을 실핸한 후 터미널에서 `pip install django`를 입력한다.
     
-    ![image.png](image.png)
+    ![Image](https://github.com/user-attachments/assets/b4a36c64-4ef3-4c65-8cc6-7b4e05740324)
     
 
 1. DRF를 설치하기 위해 `pip install djangorestframework`를 입력한다.
     
-    ![image.png](image%201.png)
+    ![Image](https://github.com/user-attachments/assets/1eb270c4-0b97-4905-89c6-0edc397332a9)
     
 
 💡DRF란 Django REST Framework의 줄임말로, Django 프레임워크를 기반으로 RESTful API를 구축하는 데 사용되는 강력하고 유연한 도구 세트를 말한다.
@@ -64,12 +64,12 @@ tag:
 1. [https://www.toptal.com/developers/gitignore/](https://www.toptal.com/developers/gitignore/) 접속
 2. 자기에게 맞는 운영체제, 개발 환경, 프로그래밍 언어 입력 후 생성 클릭
     
-    ![io.png](io.png)
+    ![Image](https://github.com/user-attachments/assets/3b13ac9f-2004-496d-a8ce-626c8b7bed5a)
     
 
 1. 생성 버튼을 클릭한 후 나온 화면 내용을 전부 복사한다.
     
-    ![nore.png](nore.png)
+    ![Image](https://github.com/user-attachments/assets/ed84c3f6-d3a8-414e-a4bd-ea6fdc0eeab6)
     
 2. venv 폴더 안에 있는 .gitignore에 복사한 내용을 붙여준다.
     1. 만약 .gitignore가 없을 경우 생성
@@ -81,7 +81,7 @@ tag:
 
 1. `django-admin startproject {프로젝트이름}`을 입력해준다.
     
-    ![list.png](list.png)
+    ![Image](https://github.com/user-attachments/assets/fedf61dc-cbe8-409b-8819-b0a9b8a6e1a8)
     
 - **__init__.py:** 현재 폴더가 파이썬 패키지임을 나타내는 파일
 - **asgi.py:** 웹 서버와 프레임워크 간의 인터페이스를 정의하는 파일
@@ -101,4 +101,4 @@ tag:
 2. 그  후, `python manage.py runserver` 명령어를 통해 manage.py 실행
 3. [http://127.0.0.1:8000](http://127.0.0.1:8000)으로 들어가서 Django 페이지가 뜨면 세팅 완료
     
-    ![image.png](image%202.png)
+    ![Image](https://github.com/user-attachments/assets/8fa5caf4-46ae-4ddb-9de2-3fa6e7701255)
