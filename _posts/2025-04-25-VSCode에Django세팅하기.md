@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Python] VSCode에 Django 세팅하기기"
+title: "[Python] VSCode에 Django 세팅하기"
 published: true
 categories:
   - Python
