@@ -33,7 +33,7 @@
               <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Python" %}
-                        <li><a href="/categories/python" class="">python ({{category[1].size}})</a></li>
+                        <li><a href="/categories/python" class="">Python ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
               </ul>
@@ -45,6 +45,13 @@
                           <li><a href="/categories/data" class="">Data ({{category[1].size}})</a></li>
                       {% endif %}
                   {% endfor %}
+              </ul>
+              <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "PythonError" %}
+                        <li><a href="/categories/pythonError" class="">Error ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
               </ul>
           <span class="nav__sub-title">Java</span>
               <ul>
