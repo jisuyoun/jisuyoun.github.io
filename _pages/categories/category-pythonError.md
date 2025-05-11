@@ -1,7 +1,7 @@
 ---
 title: "PythonError"
 layout: archive
-permalink: categories/PythonError
+permalink: categories/pythonError
 author_profile: true
 sidebar_main: true
 ---
